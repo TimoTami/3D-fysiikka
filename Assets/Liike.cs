@@ -6,6 +6,7 @@ public class Liike : MonoBehaviour
 {
     Rigidbody rb;
     //Camera camera;
+    public float speed;
     public float thrust;
     
     public GameObject keila1;
@@ -75,7 +76,12 @@ public class Liike : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+        rb.AddForce(movement * speed);
 
 
         //rb.AddRelativeForce(transform.forward * thrust);
